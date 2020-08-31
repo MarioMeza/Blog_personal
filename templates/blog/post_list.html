@@ -1,0 +1,46 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+{% for post in posts %}
+<br>
+<div class="card mb-3">
+    <img class="card-img-top" src="https://tec.mx/sites/default/files/styles/header_full/public/2018-11/Programer.jpg?itok=c5V9xXKc" width="" height="350px" alt="Card image cap">
+    <div class="card-body">
+        <h3 class="card-title"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3>
+        <p class="card-text">{{ post.text|linebreaksbr }}</p>
+        <a class="btn" href="{% url 'post_detail' pk=post.pk %}"><i class="fas fa-plus-circle"></i> See detail</a>
+        <strong></p>{{ post.published_date }}</p></strong>
+    </div>
+    <!-- <div class="card-footer text-muted">
+        <p></p>{{ post.published_date }}</p>
+    </div> -->
+</div>
+
+{% endfor %}
+{% endblock content %}
+<div class="card mb-3">
+    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+
+
+
+
+{% for post in posts %}
+<div class="post">
+    <div class="date">
+        <p>{{ post.published_date }}</p>
+    </div>
+    <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+    <p>{{ post.text|linebreaksbr }}</p>
+    <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.comments.count }}</a>
+    <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-primary">Go somewhere</a>
+
+    <!-- <hr> -->
+    <!-- <a href="{% url 'post_detail' pk=post.pk %}">Comments approved: {{ post.approved_comments.count }}</a>-->
+</div>
+{% endfor %}

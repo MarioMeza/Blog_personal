@@ -1,0 +1,48 @@
+
+/*Color para el fondo de Pagina*/
+body {
+  line-height: 1.7;
+  font-weight: 300;
+  font-size: 1rem;
+  background: #18191a;
+  font-family: "Muli", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; 
+
+}
+
+
+/*Color para colores de span de categorias*/
+.view-all-btn {
+/* background: #d9d9d9; */
+color: rgb(255, 255, 255);
+font-weight: 700;
+font-size: 12px;
+padding: 5px 15px;
+border-radius: 4px; }
+.view-all-btn:hover {
+    background: #bfbfbf;
+    color: rgb(255, 255, 255); 
+}
+
+/*Detalles post del autor que lo creo*/
+.sidebar-box {
+    margin-bottom: 4em;
+    font-size: 15px;
+    width: 100%;
+    float: left;
+    background: #242526; }
+    .sidebar-box *:last-child {
+      margin-bottom: 0;
+      background: #242526;
+     }
+    .sidebar-box .heading {
+      font-size: 18px;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #242526; }
+
+
+
+
+/*Letra de categirias en portada*/      
+
+      

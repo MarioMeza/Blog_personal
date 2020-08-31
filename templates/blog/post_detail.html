@@ -1,0 +1,47 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="post">
+        {% if post.published_date %}
+            <div class="date">
+                <!-- {{ post.published_date }} -->
+            </div>
+
+        {% else %}
+            <br>
+            <a class="btn" href="{% url 'post_publish' pk=post.pk %}"><i class="fas fa-save"></i> Publish</a>
+            <br>
+        {% endif %}
+        <br>
+        {% if user.is_authenticated %}
+            <a class="btn-acept" href="{% url 'post_edit' pk=post.pk %}"><span class="fas fa-edit"></span></a>
+            <a class="btn-delete" href="{% url 'post_remove' pk=post.pk %}"><span class="fas fa-trash"></span></a>
+        {% endif %}
+        <br>
+        <br>
+        <strong><h2>{{ post.title }}</h2></strong>
+        <p>{{ post.text|linebreaksbr }}</p>
+    </div>
+    <a class="btn" href="{% url 'add_comment_to_post' pk=post.pk %}"><i class="fas fa-plus-circle"></i> Add comment</a> 
+    {% for comment in post.comments.all %}
+        {% if user.is_authenticated or comment.approved_comment %}
+        <div class="comment">
+            <div class="date">
+                {% if not comment.approved_comment %}
+                    <a class="btn-delete" href="{% url 'comment_remove' pk=comment.pk %}"><span class="fas fa-trash"></span></a>
+                    <a class="btn-acept" href="{% url 'comment_approve' pk=comment.pk %}"><span class="fas fa-check"></span></a>
+                {% endif %}
+            </div>
+            <div class="media mb-4">
+                <div class="media-body">
+                    <h5 class="mt-0"><strong>{{ comment.author }}</strong></h5>
+                    <p class="fechas">{{ comment.created_date }}</p>
+                    <p class="mt-0">{{ comment.text|linebreaks }}</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    {% empty %}
+        <p>No comments here yet :(</p>
+    {% endfor %}
+{% endblock %}

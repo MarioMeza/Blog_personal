@@ -1,0 +1,67 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block titulo %} {{ categoria |upper }} | Mario Meza {% endblock titulo %}
+
+{% block cuerpo %}
+<div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url({{ categoria.imagen_referencial.url }});">
+  <div class="container">
+    <div class="row same-height justify-content-center">
+      <div class="col-md-12 col-lg-10">
+        <div class="post-entry text-center">
+          <!-- <span class="post-category text-white bg-success mb-3">{{ categoria | upper }}</span> -->
+          <h2 class="categories"><a href="{{ request.build_absolute.url }}">< {{ categoria | upper }} /></a></h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% block barra_busqueda %}
+{% endblock barra_busqueda %}
+
+<section>
+  <div class="container">
+    <div class="row blog-entries element-animate mb-5">
+      <div class="card-deck">
+          {% for post in posts %}
+          <div class="col-md-4 col-sm-6 col-xs-6"> <!-- linea que hace la cantidad de carts por linea -->
+          <div class="card mt-5">
+            {% if post.imagen_referencial %}
+             <a href=" {% url 'base:detalle_post' post.slug %} "><img src="{{ post.imagen_referencial.url }}" height="300" alt="Image" class="img-fluid rounded"></a> 
+            {% endif %}
+            <div class="card-body mt-1 text-center">
+              <h5 class="card-title titulo-card"> {{post.titulo }} </h5>
+              <p class="card-text text-black"> {{ post.descripcion }} </p>
+              <a class="btn btn-info btn-sm" href="{% url 'base:detalle_post' post.slug %}">Continue reading</a>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted titulo-card">{{ post.fecha_publicacion }}</small>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="row text-center pt-4 border-top">
+      <div class="col-md-12">
+        <div class="custom-pagination">
+          Página {{ posts.number }} de {{ posts.paginator.num_pages }}
+          {% if posts.has_previous %}
+            <li>
+              <a href="?page={{ posts.previous_page_number }}">{{ posts.previous_page_number }}</a>
+            </li>
+          {% endif %}
+          {% if posts.has_next %}
+            <li>
+              <a href="?page={{ posts.next_page_number }}">{{ posts.next_page_number }}</a>
+            </li>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock cuerpo %}
+
+
