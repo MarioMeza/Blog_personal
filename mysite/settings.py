@@ -19,11 +19,11 @@ SECRET_KEY = 'q+t723*9rq*glik^20h7n^sb%xgw#7*95ax!flfg9idfad1s7f'
 
 # SECURITY WARNING: don't run with debug turned on in production!2
 DEBUG = False #Para produccion dejar en false y cargara con plantillas de error standart y en local en true pero cargara errores por default
-#TEMPLATE_DEBUG = False
+TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = []
-DISABLE_COLLECTSTATIC = 1
-ALLOWED_HOSTS = ['virtualcode.herokuapp.com', '127.0.0.1']
-#        '*',] #para produccion colocar host de heroku y  para local quitar
+ALLOWED_HOSTS = ['virtualcode.herokuapp.com', '127.0.0.1', '*'] 
+DISABLE_COLLECTSTATIC = 1 
+# #para produccion colocar host de heroku y  para local quitar
 
 # Application definition
 
