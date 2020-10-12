@@ -22,7 +22,7 @@ DEBUG = False #Para produccion dejar en false y cargara con plantillas de error 
 #TEMPLATE_DEBUG = False
 ALLOWED_HOSTS = []
 DISABLE_COLLECTSTATIC = 1
-ALLOWED_HOSTS = ['virtual-code.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['virtualcode.herokuapp.com', '127.0.0.1']
 #        '*',] #para produccion colocar host de heroku y  para local quitar
 
 # Application definition
