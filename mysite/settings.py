@@ -30,10 +30,11 @@ EMAIL_PORT = 587
 SECRET_KEY = 'q+t723*9rq*glik^20h7n^sb%xgw#7*95ax!flfg9idfad1s7f'
 
 # SECURITY WARNING: don't run with debug turned on in production!2
-DEBUG = False #Para produccion dejar en false y cargara con plantillas de error standart y en local en true pero cargara errores por default
-TEMPLATE_DEBUG = True
-ALLOWED_HOSTS = ['virtual-code.herokuapp.com', '127.0.0.1',
-        '*',] #para produccion colocar host de heroku y  para local quitar
+DEBUG = True #Para produccion dejar en false y cargara con plantillas de error standart y en local en true pero cargara errores por default
+TEMPLATE_DEBUG = False
+ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ['virtual-code.herokuapp.com', '127.0.0.1',
+#        '*',] #para produccion colocar host de heroku y  para local quitar
 
 # Application definition
 
@@ -126,30 +127,36 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# # Static files (CSS, JavaScript, Images)
+# # https://docs.djangoproject.com/en/3.0/howto/static-files/
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_URL = '/static/'
+# MEDIA_URL = '/media/'
+# # STATICFILES_DIRS = [
+# #     os.path.join(BASE_DIR, 'static')
+# # ]
+# MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+# PROJECT_DIR = os.path.dirname(__file__)
+# TEMPLATE_DIRS = (os.path.join(PROJECT_DIR, '../templates'),)
+
+
+
+#FUNCIONAN PARA LOCAL!
+if DEBUG:
+        STATICFILES_DIRS = [
+            os.path.join(BASE_DIR, 'static')
+       ]
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static')
-# ]
+#STATICFILES_DIRS = (BASE_DIR,'static')
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_URL = '/media/'
 PROJECT_DIR = os.path.dirname(__file__)
 TEMPLATE_DIRS = (os.path.join(PROJECT_DIR, '../templates'),)
 
 
 
-#FUNCIONAN PARA LOCAL!
-# if DEBUG:
-#         STATICFILES_DIRS = [
-#             os.path.join(BASE_DIR, 'static')
-#        ]
-# else:
-#     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# STATIC_URL = '/static/'
-# #STATICFILES_DIRS = (BASE_DIR,'static')
-# MEDIA_ROOT = os.path.join(BASE_DIR,'media')
-# MEDIA_URL = '/media/'
-# PROJECT_DIR = os.path.dirname(__file__)
-# TEMPLATE_DIRS = (os.path.join(PROJECT_DIR, '../templates'),)
+
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
