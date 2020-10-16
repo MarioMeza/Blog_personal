@@ -55,7 +55,7 @@
 
     {% block cuerpo %}
       <div id="carouselExampleSlidesOnly" class="carousel slide">
-        <div class="site-cover site-cover-sm same-height overlay" style="background-image: url({{ portadas.imagen_referencial.url }});">
+        {% comment %} <div class="site-cover site-cover-sm same-height overlay" style="background-image: url({{ portadas.imagen_referencial.url }});"> {% endcomment %}
           <div class="container">
             <div class="row same-height align-items-center">
               <div class="col-md-12 col-lg-6">
@@ -73,7 +73,9 @@
           </div>
         </div>
       </div>
-    
+      <br>
+      <br>
+      <br>
       <div class="site-section">
         <div class="container">
           <div class="row align-items-stretch retro-layout">
@@ -115,6 +117,7 @@
           </div>
         </div>
       </div>
+
       
       <div class="site-section">
         <div class="container">
